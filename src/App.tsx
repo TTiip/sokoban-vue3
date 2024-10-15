@@ -1,17 +1,12 @@
 import { defineComponent } from 'vue'
-import { useMapStore } from '~/store'
+import Game from './components/game/game'
 
 export default defineComponent({
   name: 'AppComponent',
   setup () {
-    const { arr } = useMapStore()
-    console.log(arr, 'arr')
-
     return () => (
       <main class="font-sans text-gray-700 dark:text-gray-200">
-        { arr.map(item => {
-          console.log(item, 'item')
-        }) }
+        <Game />
         <router-view />
       </main>
     )
