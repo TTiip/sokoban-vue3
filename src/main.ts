@@ -1,3 +1,4 @@
+import { createPinia } from 'pinia'
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import routes from '~/router'
@@ -14,6 +15,7 @@ import './unocss-icon'
 // console.log(routes, 'routes')
 
 const app = createApp(App)
+const pinia = createPinia()
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes,
@@ -30,5 +32,7 @@ const router = createRouter({
 //   }
 // })
 
-app.use(router)
-app.mount('#app')
+app
+  .use(router)
+  .use(pinia)
+  .mount('#app')

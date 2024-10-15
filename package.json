@@ -8,14 +8,12 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test:w": "vitest",
-    "test:r": "vitest run",
-    "test:ui": "vitest --ui",
+    "test": "vitest run",
     "dep:up": "taze -Ir major"
   },
   "dependencies": {
-    "element-plus": "^2.8.3",
     "vue": "^3.5.8",
+    "pinia": "^2.2.2",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {
@@ -27,7 +25,6 @@
     "@vitejs/plugin-vue-jsx": "^4.0.1",
     "@vue/test-utils": "^2.4.6",
     "eslint": "^9.11.1",
-    "pinia": "^2.2.2",
     "pnpm": "^9.11.0",
     "taze": "^0.16.9",
     "typescript": "^5.6.2",

@@ -1,27 +1,19 @@
-import { ElConfigProvider } from 'element-plus'
-import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import { defineComponent } from 'vue'
+import { useMapStore } from '~/store'
 
 export default defineComponent({
   name: 'AppComponent',
   setup () {
-    const config = {
-      size: 'default',
-      message: {
-        max: 3,
-      },
-      button: {
-        autoInsertSpace: true,
-      },
-      locale: zhCn,
-    }
+    const { arr } = useMapStore()
+    console.log(arr, 'arr')
 
     return () => (
-      <ElConfigProvider {...config}>
-        <main class="font-sans text-gray-700 dark:text-gray-200">
-          <router-view />
-        </main>
-      </ElConfigProvider>
+      <main class="font-sans text-gray-700 dark:text-gray-200">
+        { arr.map(item => {
+          console.log(item, 'item')
+        }) }
+        <router-view />
+      </main>
     )
   },
 })
