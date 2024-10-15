@@ -152,6 +152,7 @@ export default antfu({
         imports: 'always-multiline',
         exports: 'always-multiline',
         functions: 'always-multiline',
+        enums: 'always-multiline',
       },
     ],
     // 末尾逗号使用规则配置
