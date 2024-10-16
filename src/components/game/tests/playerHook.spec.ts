@@ -1,6 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
-import { useRouter } from 'vue-router'
 import { useSetUp } from '~/helper/components'
 import { usePlayerStore } from '~/store'
 import { KEY_CODE, useMove } from '../playerHook'
@@ -13,12 +12,10 @@ describe('playerHook', () => {
     resetPlayer()
   })
   it('should move to left when press ArrowLeft', () => {
-    const { wrapper, router } = useSetUp(() => {
+    const { wrapper } = useSetUp(() => {
       // setup 中调用 注册键盘事件
       useMove()
-      useRouter()
     })
-    console.log(router, 'router')
 
     const { player } = usePlayerStore()
 
