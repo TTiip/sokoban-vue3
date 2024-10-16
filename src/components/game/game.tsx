@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import Map from '~/components/game/map'
+import Player from '~/components/game/player'
 
 export default defineComponent({
   name: 'Game',
@@ -7,6 +8,7 @@ export default defineComponent({
     return () => (
       <>
         <Map />
+        <Player />
       </>
     )
   },

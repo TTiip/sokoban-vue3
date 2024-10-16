@@ -6,6 +6,9 @@ import { defineConfig } from 'vitest/config'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  test: {
+    environment: 'happy-dom',
+  },
   define: {
     __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'true',
   },
