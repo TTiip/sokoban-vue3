@@ -1,7 +1,7 @@
 import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { useSetUp } from '~/helper/components'
-import { usePlayerStore } from '~/store'
+import { useMapStore, usePlayerStore } from '~/store'
 import { KEY_CODE, useMove } from '../playerHook'
 
 describe('playerHook', () => {
@@ -16,6 +16,15 @@ describe('playerHook', () => {
       // setup 中调用 注册键盘事件
       useMove()
     })
+
+    // 针对每个不同的测试case 进行数据init
+    const { setupMap } = useMapStore()
+    const newMap = [
+      [2, 2, 2],
+      [2, 2, 2],
+      [2, 2, 2],
+    ]
+    setupMap(newMap)
 
     const { player } = usePlayerStore()
 
