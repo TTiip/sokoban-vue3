@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { useSetUp } from '~/helper/components'
 import { useMapStore, usePlayerStore } from '~/store'
-import { KEY_CODE, useMove } from '../playerHook'
+import { KEY_CODE, usePlayerHook } from '../hooks/playerHook'
 
 describe('playerHook', () => {
   beforeEach(() => {
@@ -12,6 +12,7 @@ describe('playerHook', () => {
     resetPlayer()
   })
   it('should move to left when press ArrowLeft', () => {
+    const { useMove } = usePlayerHook()
     const { wrapper } = useSetUp(() => {
       // setup 中调用 注册键盘事件
       useMove()

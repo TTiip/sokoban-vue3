@@ -1,15 +1,15 @@
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 import Keeper from '~/assets/keeper.png'
-import { useMove, usePosition } from './playerHook'
+import { usePlayerHook } from './hooks/playerHook'
 
 export default defineComponent({
   name: 'Player',
   setup () {
-    useMove()
-    const { position } = usePosition()
+    const usePlayerInstance = usePlayerHook()
+    usePlayerInstance.useMove()
 
     return () => (
-      <div class="absolute" style={position.value}>
+      <div class="absolute" style={usePlayerInstance.position}>
         <img src={Keeper} />
       </div>
     )

@@ -12,7 +12,7 @@
     "dep:up": "taze -Ir major"
   },
   "dependencies": {
-    "pinia": "^2.2.2",
+    "pinia": "^2.2.4",
     "vue": "^3.5.8",
     "vue-router": "^4.4.5"
   },
