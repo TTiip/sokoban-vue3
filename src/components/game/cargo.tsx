@@ -1,3 +1,4 @@
+import type { PropType } from 'vue'
 import { defineComponent } from 'vue'
 import Cargo from '~/assets/cargo.png'
 import CargoNoTaget from '~/assets/cargo_on_target.png'
@@ -6,8 +7,14 @@ import { usePosition } from '~/componsables'
 export default defineComponent({
   name: 'Cargo',
   props: {
-    x: Number,
-    y: Number,
+    x: {
+      type: Number as PropType<number>,
+      retuired: true,
+    },
+    y: {
+      type: Number as PropType<number>,
+      retuired: true,
+    },
   },
   setup (props) {
     const cargoPosition = {
