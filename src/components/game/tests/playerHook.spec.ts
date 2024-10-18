@@ -7,9 +7,6 @@ import { KEY_CODE, usePlayerHook } from '../hooks/playerHook'
 describe('playerHook', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
-    const { resetPlayer } = usePlayerStore()
-    // 每调用前都重置一下参数
-    resetPlayer()
   })
   it('should move to left when press ArrowLeft', () => {
     const { useMove } = usePlayerHook()

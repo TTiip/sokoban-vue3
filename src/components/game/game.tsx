@@ -7,13 +7,16 @@ import { useCargoStore } from '~/store'
 export default defineComponent({
   name: 'Game',
   setup () {
-    const { cargos } = useCargoStore()
+    const { cargos, addCargo, createCargo } = useCargoStore()
+    addCargo(createCargo({ x: 4, y: 4 }))
+    addCargo(createCargo({ x: 3, y: 3 }))
+
     return () => (
       <>
         <Map />
         <Player />
         {
-          cargos.map(cargoItem => <Cargo x={cargoItem.x} y={cargoItem.y} />)
+          cargos.map(cargoItem => <Cargo cargoItem={cargoItem} />)
         }
       </>
     )
