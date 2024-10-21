@@ -7,11 +7,11 @@ describe('targets', () => {
     setActivePinia(createPinia())
   })
 
-  it('should create cargo an add cargos', () => {
+  it('should create target an add targets', () => {
     const { targets, createTarget, addTarget } = useTargetStore()
 
-    const cargoItem = createTarget({ x: 2, y: 1 })
-    addTarget(cargoItem)
+    const targetItem = createTarget({ x: 2, y: 1 })
+    addTarget(targetItem)
 
     expect(targets.length).toBe(1)
   })

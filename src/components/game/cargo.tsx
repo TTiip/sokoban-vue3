@@ -18,7 +18,7 @@ export default defineComponent({
 
     return () => (
       <div class="absolute" style={position.value}>
-        <img src={Cargo} />
+        <img src={props.cargoItem?.onTarget ? Cargo : CargoNoTaget} />
       </div>
     )
   },

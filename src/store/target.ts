@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
-import { useMapStore } from '~/store'
 
 export interface TargetItem {
   x: number

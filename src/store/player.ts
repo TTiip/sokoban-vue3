@@ -17,7 +17,7 @@ export const usePlayerStore = defineStore('player', () => {
   const { isWall } = useMapStore()
 
   function _move (dx: number, dy: number) {
-    const position = { x: player.x + dx, y: player.y + dy }
+    const position = { x: player.x + dx, y: player.y + dy, onTarget: false }
     if (isWall(position)) {
       return
     }
