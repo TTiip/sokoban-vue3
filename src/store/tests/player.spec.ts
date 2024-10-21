@@ -287,49 +287,58 @@ describe('player', () => {
       expect(cargoItem2.x).toBe(2)
     })
 
-    // it('push cargo to right', () => {
-    //   const { player, movePlayerToRight } = usePlayerStore()
-    //   const { addCargo, createCargo } = useCargoStore()
+    it('push cargo to right', () => {
+      const { player, movePlayerToRight } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
 
-    //   player.x = 2
+      player.x = 1
 
-    //   const cargoItem = createCargo({ x: 3, y: 1 })
-    //   addCargo(cargoItem)
+      const cargoItem1 = createCargo({ x: 2, y: 1 })
+      const cargoItem2 = createCargo({ x: 3, y: 1 })
+      addCargo(cargoItem1)
+      addCargo(cargoItem2)
 
-    //   movePlayerToRight()
+      movePlayerToRight()
 
-    //   expect(player.x).toBe(2)
-    //   expect(cargoItem.x).toBe(3)
-    // })
+      expect(player.x).toBe(1)
+      expect(cargoItem1.x).toBe(2)
+      expect(cargoItem2.x).toBe(3)
+    })
 
-    // it('push cargo to up', () => {
-    //   const { player, movePlayerToUp } = usePlayerStore()
-    //   const { addCargo, createCargo } = useCargoStore()
+    it('push cargo to up', () => {
+      const { player, movePlayerToUp } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
 
-    //   player.y = 2
+      player.y = 3
 
-    //   const cargoItem = createCargo({ x: 1, y: 1 })
-    //   addCargo(cargoItem)
+      const cargoItem1 = createCargo({ x: 1, y: 1 })
+      const cargoItem2 = createCargo({ x: 1, y: 2 })
+      addCargo(cargoItem1)
+      addCargo(cargoItem2)
 
-    //   movePlayerToUp()
+      movePlayerToUp()
 
-    //   expect(player.y).toBe(2)
-    //   expect(cargoItem.y).toBe(1)
-    // })
+      expect(player.y).toBe(3)
+      expect(cargoItem1.y).toBe(1)
+      expect(cargoItem2.y).toBe(2)
+    })
 
-    // it('push cargo to down', () => {
-    //   const { player, movePlayerToDown } = usePlayerStore()
-    //   const { addCargo, createCargo } = useCargoStore()
+    it('push cargo to down', () => {
+      const { player, movePlayerToDown } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
 
-    //   player.y = 1
+      player.y = 1
 
-    //   const cargoItem = createCargo({ x: 1, y: 3 })
-    //   addCargo(cargoItem)
+      const cargoItem1 = createCargo({ x: 1, y: 2 })
+      const cargoItem2 = createCargo({ x: 1, y: 3 })
+      addCargo(cargoItem1)
+      addCargo(cargoItem2)
 
-    //   movePlayerToDown()
+      movePlayerToDown()
 
-    //   expect(player.y).toBe(2)
-    //   expect(cargoItem.y).toBe(3)
-    // })
+      expect(player.y).toBe(1)
+      expect(cargoItem1.y).toBe(2)
+      expect(cargoItem2.y).toBe(3)
+    })
   })
 })
