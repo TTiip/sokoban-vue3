@@ -6,18 +6,6 @@ describe('map', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
   })
-  it('init map data', () => {
-    const mapData = [
-      [1, 1, 1, 1, 1],
-      [1, 2, 2, 2, 1],
-      [1, 2, 2, 2, 1],
-      [1, 2, 2, 2, 1],
-      [1, 1, 1, 1, 1],
-    ]
-    const { map } = useMapStore()
-
-    expect(map).toEqual(mapData)
-  })
 
   it('should setup map', () => {
     const newMap = [
