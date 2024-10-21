@@ -22,11 +22,13 @@ export const usePlayerStore = defineStore('player', () => {
       return
     }
 
-    const { getCargoItem } = useCargoStore()
-    const cargoItem = getCargoItem(position)
+    const { findCargoItem, moveCargo } = useCargoStore()
+    const cargoItem = findCargoItem(position)
     if (cargoItem) {
-      cargoItem.x += dx
-      cargoItem.y += dy
+      const isMoveCargo = moveCargo(cargoItem, dx, dy)
+      if (!isMoveCargo) {
+        return
+      }
     }
 
     player.x += dx

@@ -185,4 +185,151 @@ describe('player', () => {
       expect(cargoItem.y).toBe(3)
     })
   })
+
+  describe('should not move when hits wall', () => {
+    beforeEach(() => {
+      const { setupMap } = useMapStore()
+      const newMap = [
+        [1, 1, 1, 1, 1],
+        [1, 2, 2, 2, 1],
+        [1, 2, 2, 2, 1],
+        [1, 2, 2, 2, 1],
+        [1, 1, 1, 1, 1],
+      ]
+      setupMap(newMap)
+    })
+    it('should not move when press left', () => {
+      const { player, movePlayerToLeft } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
+
+      player.x = 2
+
+      const cargoItem = createCargo({ x: 1, y: 1 })
+      addCargo(cargoItem)
+
+      movePlayerToLeft()
+      expect(player.x).toBe(2)
+      expect(cargoItem.x).toBe(1)
+    })
+
+    it('push cargo to right', () => {
+      const { player, movePlayerToRight } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
+
+      player.x = 2
+
+      const cargoItem = createCargo({ x: 3, y: 1 })
+      addCargo(cargoItem)
+
+      movePlayerToRight()
+
+      expect(player.x).toBe(2)
+      expect(cargoItem.x).toBe(3)
+    })
+
+    it('push cargo to up', () => {
+      const { player, movePlayerToUp } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
+
+      player.y = 2
+
+      const cargoItem = createCargo({ x: 1, y: 1 })
+      addCargo(cargoItem)
+
+      movePlayerToUp()
+
+      expect(player.y).toBe(2)
+      expect(cargoItem.y).toBe(1)
+    })
+
+    it('push cargo to down', () => {
+      const { player, movePlayerToDown } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
+
+      player.y = 1
+
+      const cargoItem = createCargo({ x: 1, y: 3 })
+      addCargo(cargoItem)
+
+      movePlayerToDown()
+
+      expect(player.y).toBe(2)
+      expect(cargoItem.y).toBe(3)
+    })
+  })
+
+  describe('should not move when hits other cargo', () => {
+    beforeEach(() => {
+      const { setupMap } = useMapStore()
+      const newMap = [
+        [1, 1, 1, 1, 1],
+        [1, 2, 2, 2, 1],
+        [1, 2, 2, 2, 1],
+        [1, 2, 2, 2, 1],
+        [1, 1, 1, 1, 1],
+      ]
+      setupMap(newMap)
+    })
+    it('should not move when press left', () => {
+      const { player, movePlayerToLeft } = usePlayerStore()
+      const { addCargo, createCargo } = useCargoStore()
+
+      player.x = 3
+
+      const cargoItem1 = createCargo({ x: 1, y: 1 })
+      const cargoItem2 = createCargo({ x: 2, y: 1 })
+      addCargo(cargoItem1)
+      addCargo(cargoItem2)
+
+      movePlayerToLeft()
+      expect(player.x).toBe(3)
+      expect(cargoItem1.x).toBe(1)
+      expect(cargoItem2.x).toBe(2)
+    })
+
+    // it('push cargo to right', () => {
+    //   const { player, movePlayerToRight } = usePlayerStore()
+    //   const { addCargo, createCargo } = useCargoStore()
+
+    //   player.x = 2
+
+    //   const cargoItem = createCargo({ x: 3, y: 1 })
+    //   addCargo(cargoItem)
+
+    //   movePlayerToRight()
+
+    //   expect(player.x).toBe(2)
+    //   expect(cargoItem.x).toBe(3)
+    // })
+
+    // it('push cargo to up', () => {
+    //   const { player, movePlayerToUp } = usePlayerStore()
+    //   const { addCargo, createCargo } = useCargoStore()
+
+    //   player.y = 2
+
+    //   const cargoItem = createCargo({ x: 1, y: 1 })
+    //   addCargo(cargoItem)
+
+    //   movePlayerToUp()
+
+    //   expect(player.y).toBe(2)
+    //   expect(cargoItem.y).toBe(1)
+    // })
+
+    // it('push cargo to down', () => {
+    //   const { player, movePlayerToDown } = usePlayerStore()
+    //   const { addCargo, createCargo } = useCargoStore()
+
+    //   player.y = 1
+
+    //   const cargoItem = createCargo({ x: 1, y: 3 })
+    //   addCargo(cargoItem)
+
+    //   movePlayerToDown()
+
+    //   expect(player.y).toBe(2)
+    //   expect(cargoItem.y).toBe(3)
+    // })
+  })
 })
