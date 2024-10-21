@@ -2,7 +2,7 @@ import { createPinia, setActivePinia } from 'pinia'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { useCargoStore } from '../cargo'
 
-describe('map', () => {
+describe('cargos', () => {
   beforeEach(() => {
     setActivePinia(createPinia())
   })
