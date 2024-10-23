@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import { onMounted, onUnmounted } from 'vue'
 import { usePosition } from '~/componsables'
 import { usePlayerStore } from '~/store'
+import { useGameStore } from '~/store/game'
 
 export enum KEY_CODE {
   LEFT = 'ArrowLeft',
@@ -13,6 +14,8 @@ export enum KEY_CODE {
 export const usePlayerHook = defineStore('playHook', () => {
   function useMove () {
     const { movePlayerToLeft, movePlayerToRight, movePlayerToUp, movePlayerToDown } = usePlayerStore()
+
+    const { detectionGameCompleted } = useGameStore()
 
     function handleKeyUp (e: KeyboardEvent) {
       switch (e.code) {
@@ -31,6 +34,8 @@ export const usePlayerHook = defineStore('playHook', () => {
         default:
           break
       }
+
+      detectionGameCompleted()
     }
     onMounted(() => {
       window.addEventListener('keyup', handleKeyUp)
