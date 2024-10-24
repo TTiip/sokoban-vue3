@@ -1,18 +1,22 @@
 import { defineStore } from 'pinia'
 import { reactive } from 'vue'
 import { useMapStore, useTargetStore } from '~/store'
+import { generateId } from '~/utils/ids'
 
 export interface CargoItem {
+  id?: number | string
   x: number
   y: number
-  onTarget: boolean
+  onTarget?: boolean
 }
 
 export const useCargoStore = defineStore('cargo', () => {
-  const cargos: CargoItem[] = reactive([])
+  const cargos = reactive<CargoItem[]>([])
 
   function createCargo (pos: { x: number, y: number }): CargoItem {
     return {
+      // 添加id 避免因为 vue3 的优化导致的组件复用带来的问题
+      id: generateId(),
       x: pos.x,
       y: pos.y,
       onTarget: false,
@@ -58,11 +62,16 @@ export const useCargoStore = defineStore('cargo', () => {
     cargo.onTarget = !!findTargetItem(cargo)
   }
 
+  function cleanAllCargos () {
+    cargos.splice(0, cargos.length)
+  }
+
   return {
     cargos,
     addCargo,
     createCargo,
     findCargoItem,
     moveCargo,
+    cleanAllCargos,
   }
 })

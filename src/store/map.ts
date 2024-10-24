@@ -1,25 +1,16 @@
 import type { Player } from './player'
 import { defineStore } from 'pinia'
+import { reactive } from 'vue'
 
 export enum MapTile {
   WALL = 1,
   FLOOR = 2,
 }
 
-type Map = MapTile[][]
+export type Map = MapTile[][]
 
 export const useMapStore = defineStore('map', () => {
-  let map = [
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 2, 2, 2, 2, 2, 2, 2, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1],
-  ]
+  let map = reactive<Map>([])
 
   function setupMap (newMap: Map) {
     // 直接赋值会导致 map 和 newMap 的地址不一样 测试时候的equal不通过 (错误示范❌)
