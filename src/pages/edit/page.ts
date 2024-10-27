@@ -1,4 +1,4 @@
 export default {
-  title: 'index - 首页',
+  title: '编辑页面',
   menuOrder: 1,
 }

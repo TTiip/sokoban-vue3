@@ -30,7 +30,7 @@ routes = [
   },
   {
     path: '/',
-    redirect: '/index',
+    redirect: '/game',
   },
   {
     path: '/404',
