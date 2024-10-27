@@ -1,4 +1,5 @@
 import { defineComponent } from 'vue'
+import MapEdit from '~/components/edit/mapEdit'
 
 export default defineComponent({
   name: 'Game',
@@ -6,7 +7,9 @@ export default defineComponent({
     return () => (
       <>
         <div class="flex">
-          <div class="w-4/6 bg-pink-400">地图编辑区域</div>
+          <div class="w-4/6 bg-pink-400">
+            <MapEdit />
+          </div>
           <div>数据展示区域</div>
         </div>
         <div>
